@@ -20,5 +20,16 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.reviews = require("./reviews.model.js")(sequelize, Sequelize);
+db.user = require("./users.model.js")(sequelize, Sequelize);
+db.role = require("./roles.model.js")(sequelize, Sequelize);
+
+db.role.belongsToMany(db.user, {
+  through: "user_roles"
+});
+db.user.belongsToMany(db.role, {
+  through: "user_roles"
+});
+
+db.ROLES = ["user", "admin"];
 
 module.exports = db;
