@@ -1,7 +1,8 @@
 module.exports = (sequelize, Sequelize) => {
   const Review = sequelize.define("review", {
     id: {
-      type: Sequelize.INT
+      type: Sequelize.INTEGER,
+      primaryKey: true
     },
     author: {
       type: Sequelize.STRING
@@ -16,7 +17,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     tags: {
-      type: Sequelize.ARRAY
+      type: Sequelize.ABSTRACT
     },
     rate: {
       type: Sequelize.FLOAT
@@ -25,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     likes: {
-      type: Sequelize.ARRAY
+      type: Sequelize.ABSTRACT
     },
     comments: {
       type: Sequelize.STRING

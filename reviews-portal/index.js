@@ -2,8 +2,8 @@ const app = require('express')();
 const { v4 } = require('uuid');
 const cors = require("cors");
 const express = require("express");
-const db = require("./app/models");
-const { CheckUser } = require('../../checker/verifySignUp');
+const db = require("./src/models");
+const { CheckUser } = require('./src/checker/verifySignUp');
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 const User = db.user;
@@ -87,6 +87,10 @@ app.post('/api/signin', (req,res) => {
     .catch(err => {
       res.status(500).send({ message: err.message });
     });
+});
+
+app.listen(5000, () => {
+  console.log("Running on port 5000.");
 });
 
 module.exports = app;
